@@ -15,15 +15,16 @@ describe('Events', function(){
     it('注册一次性事件', function(){
       console.log('#once');
       var e = new Events();
-      e.on('all change:tt', function () {
+      /*e.on('all change:tt', function () {
         console.log('all tt', arguments);
       });
-      e.once("change:title change:author", function () {
+      */
+      e.once("dd change:author", function () {
         console.log('once', arguments);
       });
       var n = 3;
       while(n) {
-        e.trigger('change:title change:author change:tt', n);
+        e.trigger('dd change:author', n);
         n--;
       }
     })
@@ -60,7 +61,7 @@ describe('Events', function(){
       });
       var n = 10;
       //while(n--) {
-        e.trigger('all change:author change:title', n);
+        e.trigger('change:author change:title', n);
       //}
     })
   })
@@ -71,7 +72,7 @@ describe('Events', function(){
     it('all 订阅所有', function(){
       console.log('#trigger all');
       var e = new Events();
-      e.on("all", function () {
+      e.on("all post change", function () {
         console.log(arguments);
       });
 
@@ -81,7 +82,7 @@ describe('Events', function(){
 
       var n = 10;
       //while(n--) {
-      e.trigger('all', n);
+      e.trigger('change post', n);
       //}
     })
   })
