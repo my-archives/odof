@@ -39,9 +39,6 @@ describe('Events', function(){
       e.on("all change:title change:author", function () {
         console.log(arguments);
       });
-      e.once("change:once", function () {
-        console.log('once', arguments);
-      });
       var n = 10;
       while(n--) {
         if (n == 5) e.off('change:title');
@@ -76,13 +73,15 @@ describe('Events', function(){
         console.log(arguments);
       });
 
+      /*
       e.on("all", function () {
         console.log('all2');
       });
+      */
 
       var n = 10;
       //while(n--) {
-      e.trigger('change post', n);
+      e.trigger('post', n);
       //}
     })
   })
