@@ -15,12 +15,16 @@ describe('Events', function(){
     it('注册一次性事件', function(){
       console.log('#once');
       var e = new Events();
-      e.once("change:title change:author", function () {
-        console.log(arguments);
+      e.on('all change:tt', function () {
+        console.log('all tt', arguments);
       });
-      var n = 10;
-      while(n--) {
-        e.trigger('change:title change:author', n);
+      e.once("change:title change:author", function () {
+        console.log('once', arguments);
+      });
+      var n = 3;
+      while(n) {
+        e.trigger('change:title change:author change:tt', n);
+        n--;
       }
     })
   })
@@ -31,7 +35,7 @@ describe('Events', function(){
     it('删除特定事件', function(){
       console.log('#off')
       var e = new Events();
-      e.on("change:title change:author", function () {
+      e.on("all change:title change:author", function () {
         console.log(arguments);
       });
       e.once("change:once", function () {
@@ -52,12 +56,12 @@ describe('Events', function(){
       console.log('#trigger');
       var e = new Events();
       e.on("change:title change:author", function () {
-        console.log(arguments);
+        console.log(arguments[0] + ' ' + arguments[1]);
       });
       var n = 10;
-      while(n--) {
-        e.trigger('change:title change:author', n);
-      }
+      //while(n--) {
+        e.trigger('all change:author change:title', n);
+      //}
     })
   })
 })
@@ -67,15 +71,17 @@ describe('Events', function(){
     it('all 订阅所有', function(){
       console.log('#trigger all');
       var e = new Events();
-      e.on("all change:title change:author", function () {
+      e.on("all", function () {
         console.log(arguments);
       });
+
       e.on("all", function () {
         console.log('all2');
       });
+
       var n = 10;
       //while(n--) {
-        e.trigger('all change:title', n);
+      e.trigger('all', n);
       //}
     })
   })
