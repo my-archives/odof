@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../../tools/mocha/mocha.css" />
+    <script src="../../tools/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script>
+      function assert(expr, msg) {
+        if (!expr) throw new Error(msg || 'failed');
+      }
+    </script>
+    <!-- 引入events.js -->
+    <script src="../../lib/common.js"></script>
+ 
+    <script src="../common.js"></script>
+    <script>
+      onload = function(){
+        var runner = mocha.run();
+      };
+    </script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+  </body>
+</html>
