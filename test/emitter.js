@@ -3,7 +3,6 @@ describe('Emitter', function(){
     it('开始注册事件', function(){
       console.log('#on');
       var e = new Emitter();
-      console.dir(e);
       e.on("change:title change:author", function () {
         console.log(arguments);
       });
