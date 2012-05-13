@@ -4,7 +4,7 @@ OdOf.js
 ## Features:
   * 遵循最新 [CommonJS][] 模块化设计
   * Modules/1.1.1(不完全支持，但必须得看齐)
-  * Events
+  * EventEmitter
   * Defered & Promise
   * Widget
 
@@ -13,6 +13,9 @@ OdOf.js
     - **[jQuery][]**
     - **[zepto][]**
     - **[ender][]**
+
+## Talks:
+  * http://cjohansen.no/talks/2012/sdc-functional/
 
 ## Optimization:
   * **[jsPerf][]** — JavaScript performance playground
